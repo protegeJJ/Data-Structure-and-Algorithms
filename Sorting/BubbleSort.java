@@ -1,6 +1,6 @@
 class BubbleSort {
-	public static void BubbleSort(int[] nums) {
-		for (int i = nums.length; i >= 0; i--) {
+	public static void bubbleSort(int[] nums) {
+		for (int i = nums.length - 1; i >= 0; i--) {
 			for (int j = 0; j < i; j++) {
 				if (nums[j] > nums[j + 1]) {
 					swap(nums, j, j+1);
@@ -27,7 +27,7 @@ class BubbleSort {
         int[] nums = {2, 5, 3, 100, 2, 3, 8, 3};
         System.out.print("Before sorting: ");
         printArray(nums);
-        bubbleSort(nums, max);
+        bubbleSort(nums);
         System.out.print("After sorting: ");
         printArray(nums);
     }
