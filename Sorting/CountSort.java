@@ -1,5 +1,6 @@
-/* 06/12/2016
- *
+/* Count sort
+ * @author JJ
+ * @date 06/12/2016
  */
 
 public class CountSort {
