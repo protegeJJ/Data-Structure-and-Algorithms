@@ -11,6 +11,9 @@ class QuickSort {
 	}
 
 	public static void recQuickSort(int[] nums, int start, int end) {
+		if (start >= end) {
+			return;
+		}
 		int pivot = partition(nums, start, end);
 	    recQuickSort(nums, start, pivot - 1);
 	    recQuickSort(nums, pivot + 1, end );
@@ -24,16 +27,14 @@ class QuickSort {
 
 		// Put element smaller than the pivot to the first half of array
 		for (int i = start; i < end; i++) {
-			if (nums[i] > nums[end]) {
+			if (nums[i] < nums[end]) {
 				swap(nums, i, start);
 				++start;
 			}
 		}
-		// Put the pivot back to position it should be
+		// Put the pivot back to position it should be in after partition
 		swap(nums, start, end);
 		return start;
-
-
 	}
 
 	public static void swap(int[] nums, int i, int j) {
@@ -42,8 +43,15 @@ class QuickSort {
 		nums[j] = temp;
 	}
 
+	public static void printArray(int[] nums) {
+		for (int num : nums) {
+			System.out.print(num + " ");
+		}
+		System.out.println();
+	}
+
 	public static void main(String args[]) {
-		int[] nums = {2, 5, 3, 100, 2, 3, 8, 3};
+		int[] nums = {2, 5, 3, 100, 2, 3, 8, 3, 10};
         System.out.print("Before sorting: ");
         printArray(nums);
         quickSort(nums);
