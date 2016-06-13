@@ -5,16 +5,49 @@
  */
 
 class MergeSort {
-	public static int findMax(int[] nums) {
-		int max = 0;
-		for (int i = 0; i < nums.length; i++) {
-			max = Math.max(max, nums[i]);
+	public static void mergeSort(int[] nums) {
+		if (nums == null || nums.length == 0) {
+			return;
 		}
-		return max;
+		mergeSort_topDown(nums, 0, nums.length - 1);
 	}
 
-	public static void mergeSort(int[] nums, int max) {
-		
+	public static void mergeSort_topDown(int[] nums, int start, int end) {
+		if (nums == null || start >= end) {
+			return;
+		}
+
+		int mid = (start + end) >> 1;
+		mergeSort_topDown(nums, start, mid);
+		mergeSort_topDown(nums, mid + 1, end);
+		merge(nums, start, mid, end);
+	}
+
+	public static void merge(int[] nums, int start, int mid, int end) {
+		int[] temp = new int[end - start + 1];
+		int i = start;
+		int j = mid + 1;
+		int k = 0;                          // index for temp array
+		while (i <= mid && j <= end) {
+			if (nums[i] < nums[j]) {
+				temp[k++] = nums[i++];
+			}
+			else {
+				temp[k++] = nums[j++];
+			}
+		}
+
+		while (i <= mid) {
+			temp[k++] = nums[i++];
+		}
+
+		while (j <= end) {
+			temp[k++] = nums[j++];
+		}
+
+		for (i = 0; i < k; i++) {
+			nums[start + i] = temp[i];
+		}
 	}
 
 	public static void printArray(int[] nums) {
@@ -29,8 +62,7 @@ class MergeSort {
         int[] nums = {2, 5, 3, 100, 2, 3, 8, 3};
         System.out.print("Before sorting: ");
         printArray(nums);
-        int max = findMax(nums);
-        mergeSort(nums, max);
+        mergeSort(nums);
         System.out.print("After sorting: ");
         printArray(nums);
     }
