@@ -1,3 +1,9 @@
+/*
+ * Insertion Sort
+ * @author JJ
+ * @date 06/13/2016
+ */
+
 class InsertionSort {
 	public static void insertionSort(int[] nums) {
 		for (int i = 1; i < nums.length; i++) {
@@ -14,7 +20,7 @@ class InsertionSort {
 		nums[i] = nums[j];
 		nums[j] = temp;
 	}
-	
+
 	public static void printArray(int[] nums) {
 		for (int num : nums) {
 			System.out.print(num + " ");
