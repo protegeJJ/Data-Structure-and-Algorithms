@@ -44,7 +44,7 @@ class QuickSelect {
 		int[] nums = {170, 45, 75, 90, 802, 24, 2, 66};
 		int kth = 3;
 		int res = quickSelect(nums, kth);
-		System.out.println("Find the " + kth + " smallest is " + res);
+		System.out.println("The " + kth + " smallest num is " + res);
 
 	}
 }
